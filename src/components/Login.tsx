@@ -57,7 +57,7 @@ const LoginPage = () => {
 
           {/* Binance TR Login */}
           <div>
-            <p className="text-[#707A8A] text-sm mb-4">Binance TR hesabıyla oturum açın:</p>
+            <p className="text-[#707A8A] text-sm mb-4 mt-10">Binance TR hesabıyla oturum açın:</p>
             <form className="space-y-4">
               <div>
                 <input
