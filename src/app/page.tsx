@@ -1,17 +1,17 @@
 import LoginPage from "@/components/Login";
 
 
-export default function HomePage () {
+export default function HomePage() {
 
-return (
+    return (
 
-<main>
+        <main>
 
-<LoginPage />
+            <LoginPage />
 
-</main>
+        </main>
 
-)
+    )
 
 
 
