@@ -98,7 +98,7 @@ const LoginPage = () => {
 
               <button
                 type="submit"
-                className="w-full bg-[#FCD535] text-[#1E2329] font-medium rounded-md py-3 hover:bg-[#FCD535]/90 transition"
+                className="w-full bg-[#FCD535] text-[#1E2329] font-medium rounded-md py-3 hover:bg-[#FCD535]/90 transition font-bold"
               >
                 Giriş Yap
               </button>
