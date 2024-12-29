@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
 import LoginPage from "@/components/Login";
 
 
@@ -6,9 +8,9 @@ export default function HomePage() {
     return (
 
         <main>
-
-            <LoginPage />
-
+<Header />
+<LoginPage />
+<Footer />
         </main>
 
     )
