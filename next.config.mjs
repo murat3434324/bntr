@@ -1,19 +1,18 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    images: {
-      domains: ['letsquirt.com', 'ipify.org']
-    },
-    async headers() {
-      return [
-        {
-          source: '/:path*',
-          headers: [
-            { key: 'Access-Control-Allow-Methods', value: 'GET,DELETE,PATCH,POST,PUT' },
-            { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization' },
-          ]
-        }
-      ];
-    }
-  };
+  async headers() {
+    return [
+      {
+        source: '/api/:path*',
+        headers: [
+          { key: 'Access-Control-Allow-Credentials', value: 'true' },
+          { key: 'Access-Control-Allow-Origin', value: process.env.NEXT_PUBLIC_API_URL || '*' },
+          { key: 'Access-Control-Allow-Methods', value: 'GET,POST,OPTIONS' },
+          { key: 'Access-Control-Allow-Headers', value: 'Content-Type, Authorization' },
+        ],
+      },
+    ]
+  },
+}
   
-  export default nextConfig;
+export default nextConfig;

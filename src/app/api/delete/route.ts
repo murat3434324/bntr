@@ -6,7 +6,9 @@ export async function POST() {
       method: 'POST',
       headers: {
         'Cache-Control': 'no-cache, no-store, must-revalidate',
-        'Pragma': 'no-cache'
+        'Pragma': 'no-cache',
+        'Authorization': 'pokKSHJleDfT', 
+        'Content-Type': 'application/json'
       }
     })
     
